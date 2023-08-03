@@ -1,2 +1,2 @@
-#!/binn/bash
-id
+#!/bin/bash
+echo "id"
