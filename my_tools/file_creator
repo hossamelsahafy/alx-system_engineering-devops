@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "Input file name"
+read filename
+echo "#!/bin/bash" > ${filename}
