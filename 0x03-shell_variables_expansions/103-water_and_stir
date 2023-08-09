@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((5#01234 + 5#0123)) | xargs printf "%o\n" | tr '01234567' 'bestchol'
+echo $((5#01234 + 5#01234)) | xargs printf "%o\n" | tr '01234567' 'bestchol'
