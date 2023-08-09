@@ -1,2 +1,2 @@
 #!/bin/bash
-echo $((5#01234 + 5#01234)) | printf "%o\n" | tr '01234567' 'bestchol'
+echo $((5#01234 + 5#01234)) | printf "%0\n" | tr '01234567' 'bestchol'
