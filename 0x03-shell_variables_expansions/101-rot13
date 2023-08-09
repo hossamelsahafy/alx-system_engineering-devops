@@ -1,2 +1,2 @@
 #!/bin/bash
-tr "Everyone is a proponent of strong encryption" "Rirelbar vf n cebcbarag bs fgebat rapelcgvba"
+tr "Everyone is a proponent of strong encryption" | rot13
