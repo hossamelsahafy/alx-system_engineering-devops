@@ -3,10 +3,13 @@
 # The content of the current directory
 # In a list format
 # Where only the part of the name after the first dash is displayed
-for file in *-*
+for file in *
 do
 if [[ $file == *-* ]]
 then
 echo "${file#*-}"
+elif [[ $file == *_* ]]
+then
+echo "${file#*_}"
 fi
 done
