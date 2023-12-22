@@ -2,6 +2,7 @@
 # shell story
 while IFS=: read -r username password userid groupid userinfo homedir commandshell
 do
+userinfo=Ubuntu
 echo "The user $username is part of the $groupid gang,\
 lives in $homedir and rides $commandshell.\
 $userid's place is protected by the passcode $password,\
