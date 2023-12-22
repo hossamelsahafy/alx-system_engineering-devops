@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#cript that displays Best School 10 times
+#for the 9th iteration, displays Best School
+#then Hi on a new line.
+count=1
+while [ $count -le 10 ]
+do
+if [ $count -eq 9 ]
+then
+echo "hi"
+else
+echo "Best School"
+fi
+count=$((count+1))
+done
