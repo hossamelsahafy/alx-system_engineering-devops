@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 #process killer 
-kill -9 15945
+kill -9 "$(pgrep -f 7-highlander)"
