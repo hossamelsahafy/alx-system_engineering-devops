@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#process killer 
+kill -9 15945
