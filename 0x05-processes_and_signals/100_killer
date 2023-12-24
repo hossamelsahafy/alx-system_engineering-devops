@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#script that kill the 100-process_and_pid_file
+#!/bin/bash
+# Ask the user for the process name
+echo "Please enter the name of the process you want to kill:"
+read process_name
+
+PID=$(pgrep -f $process_name)
+if [ -z "$PID" ]
+then
+    echo "No process found with the name $process_name"
+else
+    sudo kill -SIGKILL $PID
+    echo "Process with PID $PID has been killed"
+fi
