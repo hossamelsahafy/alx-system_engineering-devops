@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 #script that kill the 100-process_and_pid_file
-#!/bin/bash
-# Ask the user for the process name
 echo "Please enter the name of the process you want to kill:"
 read process_name
 
