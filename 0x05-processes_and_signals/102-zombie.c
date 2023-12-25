@@ -9,29 +9,34 @@
  */
 int infinite_while(void)
 {
-    while (1)
-    {
-        sleep(1);
-    }
-    return (0);
+	while (1)
+	{
+		sleep(1);
+	}
+	return (0);
 }
+/**
+ * main - main function to make zombies
+ *
+ * Return: will be Zero
+ */
 int main(void)
 {
-    int i;
-    pid_t ZOMBIE_PID;
+	int i;
+	pid_t ZOMBIE_PID;
 
-    for (i = 0; i < 5; i++)
-    {
-        ZOMBIE_PID = fork();
-        if (ZOMBIE_PID > 0)
-        {
-            printf("Zombie process created, PID: %d\n", ZOMBIE_PID);
-        }
-        else
-        {
-            exit(0);
-        }
-    }
-    infinite_while();
-    return (0);
+	for (i = 0; i < 5; i++)
+	{
+		ZOMBIE_PID = fork();
+		if (ZOMBIE_PID > 0)
+		{
+			printf("Zombie process created, PID: %d\n", ZOMBIE_PID);
+		}
+		else
+		{
+			exit(0);
+		}
+	}
+	infinite_while();
+	return (0);
 }
