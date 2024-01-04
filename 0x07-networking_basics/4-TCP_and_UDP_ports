@@ -1,0 +1,6 @@
+#!/bin/bash
+# Script That only shows listening sockets
+# and it shows the PID and name of
+# the program to which each socket belongs
+netstat -plntu
+netstat -plnx
