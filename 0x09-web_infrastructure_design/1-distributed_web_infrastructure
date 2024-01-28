@@ -1,0 +1,41 @@
+"\\wsl.localhost\Ubuntu-20.04\home\hossam\ALX\alx-system_engineering-devops\0x09-web_infrastructure_design\1-distributed_web_infrastructure.png"
+
+https://app.eraser.io/workspace/COQ5XWAI6r76307Bhd99?origin=share
+
+Distributed web infrastructure:
+
+**Problem:**
+
+**For every additional element, why you are adding it?**
+
+We add two more servers to distribute the load and reduce the risk of a single point of failure. If one server fails, the other servers can continue to handle requests.
+
+
+
+**What distribution algorithm your load balancer is configured with and how it works?**
+
+The load balancer distributes incoming network traffic across multiple servers to ensure no single server bears too much demand. This improves responsiveness and availability of applications. The load balancer could be configured with a round-robin distribution algorithm, which cycles through servers in order, distributing each new request to the next server in the list.
+
+**Is your load-balancer enabling an Active-Active or Active-Passive setup, explain the difference between both?**
+
+In an Active-Active setup, all servers are running and handling requests simultaneously. In an Active-Passive setup, the passive server only starts handling requests if the active server fails. Our setup is Active-Active, as it allows for load balancing and better use of resources.
+
+**How a database Primary-Replica (Master-Slave) cluster works?**
+
+In this setup, the primary (master) database handles all write operations and can handle read operations. The replica (slave) databases are read-only and replicate the primary database. If the primary fails, one of the replicas can be promoted to primary.
+
+**What is the difference between the Primary node and the Replica node in regard to the application?**
+
+he primary node handles write operations and can handle read operations. The replica nodes are read-only and replicate the data from the primary node. This separation allows for load balancing of read requests, backup, and redundancy.
+
+**But there are potential issues with this infrastructure:**
+
+- **Single Point of Failure (SPOF)**: While we have reduced the risk, the load balancer itself can be a single point of failure. To mitigate this, a second load balancer can be used.
+- **Security Issues**: Without a firewall or HTTPS, the servers and data transmitted could be vulnerable to attacks. A firewall can help block malicious traffic, and HTTPS encrypts data in transit to protect it from being intercepted.
+- **No Monitoring**: Without monitoring, it’s difficult to identify and troubleshoot issues promptly. Monitoring tools can provide insights into traffic patterns, server health, and more.
+
+
+
+
+
+
