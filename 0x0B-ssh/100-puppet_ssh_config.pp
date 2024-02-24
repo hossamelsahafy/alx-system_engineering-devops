@@ -1,6 +1,10 @@
 #configuration Using pupet
-file {'/home/hossam/.ssh/config':
-    ensure  => 'file',
-    mode    => '0600',
-    content => "host *\n IdentityFile ~/.ssh/school\n passwordAuthentication no"
+file_line { 'Declare identity file':
+  path => '/etc/ssh/ssh_config',
+  line => 'IdentityFile ~/.ssh/school',
+}
+
+file_line { 'Turn off passwd auth':
+  path => '/etc/ssh/ssh_config',
+  line => 'PasswordAuthentication no',
 }
