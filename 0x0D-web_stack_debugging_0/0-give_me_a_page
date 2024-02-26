@@ -1,1 +1,4 @@
-sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+#!/usr/bin/env bash
+# run container
+echo "ServerName localhost" >> /etc/apache2/apache2.conf
+service apache2 start
