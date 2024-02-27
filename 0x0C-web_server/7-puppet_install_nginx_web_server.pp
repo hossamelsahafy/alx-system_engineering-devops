@@ -14,7 +14,7 @@ file { '/var/www/hello/index.html':
     content => 'Hello World!',
     require => Nginx::Resource::server['hello']
 }
-service { 'nginx:
+service { 'nginx':
 ensure    => running,
 enable    => True,
 subscribe => Nginx::Resource::Server['hello']
