@@ -1,3 +1,4 @@
+#!/usr/bin/env pup
 class { 'nginx': }
 nginx::resource::server { 'hello':
     listen_port          => 80,
