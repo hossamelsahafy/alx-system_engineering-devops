@@ -1,4 +1,5 @@
 #!/usr/bin/env pup
+#configuration with puppet
 class { 'nginx': }
 nginx::resource::server { 'hello':
     listen_port          => 80,
