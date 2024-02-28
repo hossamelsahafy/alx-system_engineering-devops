@@ -1,21 +1,5 @@
-#!/usr/bin/env pup
-# puppet configuration
-class { 'nginx': }
-nginx::resource::server { 'hello':
-    listen_port          => 80,
-    www_root             => '/var/www/hello',
-    index_files          => ['index.html'],
-    location_cfg_append  => {
-        return => '301 https://www.youtube.com/watch?v=QH2-TGUlwu4',
-    },
-}
-file { '/var/www/hello/index.html':
-    ensure  => file,
-    content => 'Hello World!',
-    require => Nginx::Resource::Server['hello']
-}
-service { 'nginx':
-ensure    => running,
-enable    => True,
-subscribe => Nginx::Resource::Server['hello']
+#install nignx server
+exec { 'server configuration':
+  provider => shell,
+  command  => 'sudo apt-get -y update; sudo apt-get -y install nginx; echo "Hello World!" > /var/www/html/index.html; sudo sed -i "/server_name _;/a location /redirect_me {\\n\\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\\n\\t}\\n" /etc/nginx/sites-available/default; sudo service nginx restart'
 }
