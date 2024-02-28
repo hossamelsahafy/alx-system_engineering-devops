@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+# 404 not found
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo service nginx start
+
+echo "Ceci n'est pas une page" | sudo tee /usr/share/nginx/html/custom_404.html
+
+echo 'server {
+    listen 80;
+    server_name localhost;
+
+    error_page 404 /custom_404.html;
+
+    location = /custom_404.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+}' | sudo tee /etc/nginx/sites-available/default
+
+sudo service nginx restart
+
