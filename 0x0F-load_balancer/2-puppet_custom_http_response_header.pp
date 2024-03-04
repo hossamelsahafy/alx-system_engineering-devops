@@ -1,16 +1,9 @@
 # creating a custom HTTP header response, but with Puppet
-node 'web-01', 'web-02' {
-  class { 'nginx': }
-
-  nginx::resource::server { 'default':
-    listen_port => 80,
-    use_default_location => false,
-    locations => {
-      '/' => {
-        location => '/',
-        location_custom_cfg => { 'add_header' => 'X-Served-By $hostname' },
-      },
-    },
-  }
+exec { 'command':
+  command  => 'apt-get -y update;
+  apt-get -y install nginx;
+  sudo sed -i "/listen 80 default_server;/a add_header X-Served-By $HOSTNAME;" /etc/nginx/sites-available/default;
+  service nginx restart',
+  provider => shell,
 }
 
