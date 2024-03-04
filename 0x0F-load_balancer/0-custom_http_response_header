@@ -2,6 +2,7 @@
 # configure web-02 to be identical to web-01
 sudo apt update
 sudo apt install -y nginx
+
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404.html
 echo "server {
