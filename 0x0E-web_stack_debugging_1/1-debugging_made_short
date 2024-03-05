@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Debugging Server
+
+sudo service nginx stop
+sudo rm /etc/nginx/sites-enabled/default
+sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/
+sudo service nginx start
+
