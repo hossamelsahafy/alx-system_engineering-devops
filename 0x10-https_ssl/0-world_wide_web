@@ -1,31 +1,16 @@
 #!/usr/bin/env bash
-# Function to fetch and display DNS record
-fetch_dns_record() {
-    local domain=$1
-    local subdomain=$2
-    local dns_record=$(dig +short $subdomain.$domain)
-    if [[ -z "$dns_record" ]]; then
-        echo "The subdomain $subdomain does not exist."
-    else
-        local record_type=$(echo $dns_record | awk '{print $4}')
-
-        echo "The subdomain $subdomain is a $record_type record and points to $dns_record"
-    fi
+# Define a function that takes a domain and a subdomain as arguments and prints the output
+get_subdomain_info() {
+    dig +short $2.$1 | awk -v domain=$1 -v subdomain=$2 'NR==1 {type="A"; dest=$1} NR==2 {type="CNAME"; dest=$2} END {printf "The subdomain %s.%s is a %s record and points to %s\n", subdomain, domain, type, dest}'
 }
-
-if [[ -z "$1" ]]; then
-    echo "Error: Domain name is required."
-    exit 1
+if [ -z "$1" ]; then
+echo "Usage: $0 domain [subdomain]"
+exit 1
 fi
-
-domain=$1
-
-declare -a subdomains=("www" "lb-01" "web-01" "web-02")
-
-if [[ -n "$2" ]]; then
-    fetch_dns_record $domain $2
-else
-    for subdomain in "${subdomains[@]}"; do
-        fetch_dns_record $domain $subdomain
-    done
+if [ -z "$2" ]; then
+    for sub in www lb-01 web-01 web-02; do
+        get_subdomain_info $1 $sub
+        done
+    else
+        get_subdomain_info $1 $2
 fi
