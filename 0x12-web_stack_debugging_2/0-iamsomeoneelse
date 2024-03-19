@@ -2,4 +2,3 @@
 # Script That Accepts One Argument
 # Run Whoami Command Under USer Passed As An Argument
 su - $1 -c whoami
-
