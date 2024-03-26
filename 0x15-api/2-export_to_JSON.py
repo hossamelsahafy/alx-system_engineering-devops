@@ -1,14 +1,10 @@
 #!/usr/bin/python3
 """
-script to export data in the CSV format.
+script to export data in the JSON format.
 """
 import json
 import requests
 import sys
-"""
-Getting Details From WebSite
-"""
-
 
 def Todo_Pro(ID):
     """
@@ -25,14 +21,15 @@ def Todo_Pro(ID):
 
     data = []
     for Todo in Todos:
-        data.append({
-            "USER_ID": ID,
-            "USERNAME": User.get('username'),
-            "TASK_COMPLETED_STATUS": Todo.get('completed'),
-            "TASK_TITLE": Todo.get('title')
-        })
+        if Todo.get('userId') == int(ID):
+            data.append({
+                "task": Todo.get('title'),
+                "completed": Todo.get('completed'),
+                "username": User.get('username')
+            })
+
     with open("{}.json".format(ID), "w") as json_file:
-        json.dump(data, json_file)
+        json.dump({ID: data}, json_file)
 
 
 if __name__ == "__main__":
