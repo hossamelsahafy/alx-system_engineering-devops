@@ -4,35 +4,32 @@ script to export data in the JSON format.
 """
 import json
 import requests
-import sys
 
 
-def Todo_Pro(ID):
+def Todo_Pro():
     """
     Getting Details From WebSite
     """
-    U_RES = requests.get("https://jsonplaceholder.typicode.com/users/{}"
-                         .format(ID))
-    User = U_RES.json()
+    U_RES = requests.get("https://jsonplaceholder.typicode.com/users")
+    Users = U_RES.json()
 
-    Base_Url = "https://jsonplaceholder.typicode.com/users/"
-    Todos_Endpoint = "{}/todos".format(ID)
-    T_RES = requests.get(Base_Url + Todos_Endpoint)
+    T_RES = requests.get("https://jsonplaceholder.typicode.com/todos")
     Todos = T_RES.json()
 
-    data = []
-    for Todo in Todos:
-        if Todo.get('userId') == int(ID):
-            data.append({
-                "task": Todo.get('title'),
-                "completed": Todo.get('completed'),
-                "username": User.get('username')
-            })
+    data = {}
+    for User in Users:
+        ID = User.get('id')
+        data[ID] = []
+        for Todo in Todos:
+            if Todo.get('userId') == ID:
+                data[ID].append({
+                    "username": User.get('username'),
+                    "task": Todo.get('title'),
+                    "completed": Todo.get('completed')
+                })
 
-    with open("{}.json".format(ID), "w") as json_file:
-        json.dump({ID: data}, json_file)
-
+    with open("todo_all_employees.json", "w") as json_file:
+        json.dump(data, json_file)
 
 if __name__ == "__main__":
-    Employee_Id = sys.argv[1]
-    Todo_Pro(Employee_Id)
+    Todo_Pro()
