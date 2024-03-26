@@ -31,5 +31,6 @@ def Todo_Pro():
     with open("todo_all_employees.json", "w") as json_file:
         json.dump(data, json_file)
 
+
 if __name__ == "__main__":
     Todo_Pro()
