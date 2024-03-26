@@ -15,23 +15,24 @@ def Todo_Pro(ID):
     """
     Getting Details From WebSite
     """
-    U_RES = requests.get(f"https://jsonplaceholder.typicode.com/users/{ID}")
+    U_RES = requests.get("https://jsonplaceholder.typicode.com/users/{}"
+                         .format(ID))
     User = U_RES.json()
 
     Base_Url = "https://jsonplaceholder.typicode.com/users/"
-    Todos_Endpoint = f"{ID}/todos"
+    Todos_Endpoint = "{}/todos".format(ID)
     T_RES = requests.get(Base_Url + Todos_Endpoint)
     Todos = T_RES.json()
 
     Total_Todos = len(Todos)
     Completed_Todos = len([Todo for Todo in Todos if Todo['completed']])
 
-    print(f"Employee {User['name']} is done with tasks"
-          f"({Completed_Todos}/{Total_Todos}):")
+    print("Employee {} is done with tasks({}/{}):"
+          .format(User['name'], Completed_Todos, Total_Todos))
 
     for Todo in Todos:
         if Todo['completed']:
-            print(f"\t {Todo['title']}")
+            print("\t {}".format(Todo['title']))
 
 
 Employee_Id = sys.argv[1]
