@@ -28,12 +28,13 @@ def Todo_Pro(ID):
     Completed_Todos = len([Todo for Todo in Todos if Todo['completed']])
 
     print("Employee {} is done with tasks({}/{}):"
-          .format(User['name'], Completed_Todos, Total_Todos))
+          .format(User.get('name'), Completed_Todos, Total_Todos))
 
     for Todo in Todos:
         if Todo['completed']:
             print("\t {}".format(Todo['title']))
 
 
-Employee_Id = sys.argv[1]
-Todo_Pro(Employee_Id)
+if __name__ == "__main__":
+    Employee_Id = sys.argv[1]
+    Todo_Pro(Employee_Id)
