@@ -8,6 +8,9 @@ import sys
 
 
 def Todo_Pro(ID):
+    """
+    Getting Details From WebSite
+    """
     U_RES = requests.get(f"https://jsonplaceholder.typicode.com/users/{ID}")
     User = U_RES.json()
 
