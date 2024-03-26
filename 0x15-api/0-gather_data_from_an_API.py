@@ -1,12 +1,14 @@
 #!/usr/bin/python3
 """
-n script that, using this REST API, for a given employee ID,
+script that, using this REST API, for a given employee ID,
 returns information about his/her TODO list progress.
 """
 import requests
 import sys
 
-
+"""
+Getting Details From WebSite
+"""
 def Todo_Pro(ID):
     """
     Getting Details From WebSite
