@@ -8,6 +8,7 @@ import requests
 from collections import Counter
 import re
 
+
 def count_words(subreddit, word_list, hot_list=[], after=None):
     """Count occurrences of words in hot post titles"""
     url = f"https://www.reddit.com/r/{subreddit}/hot.json"
