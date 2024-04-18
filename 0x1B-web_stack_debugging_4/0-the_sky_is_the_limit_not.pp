@@ -1,7 +1,12 @@
-exec { 'fix--for-nginx':
-  command => 'sed -i "s/15/4096/" /etc/default/nginx',
-  path    => '/usr/local/bin/:/bin/'
-} -> exec { 'nginx-restart':
-  command => 'nginx restart',
-  path    => '/etc/init.d/'
+# sets file limite for nginx to 2000 (default is 15)
+exec {'replace':
+  provider => shell,
+  command  => 'sudo sed -i "s/ULIMIT=\"-n 15\"/ULIMIT=\"-n 4096\"/" /etc/default/nginx',
+  before   => Exec['restart'],
 }
+
+exec {'restart':
+  provider => shell,
+  command  => 'sudo service nginx restart',
+}
+
